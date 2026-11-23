@@ -1,0 +1,19 @@
+Tarrow is a personal AI agent that knows your life and does the work, with an interface inspired by developer terminals.
+
+IT STARTS WITH A CONVERSATION
+A short interview about your work, money, goals, people and what's getting in your way. Tarrow keeps a living "life file" on you so every answer fits your situation. You can read and edit everything it remembers.
+
+THEN IT GETS TO WORK
+Ask for anything, like "find me three events worth going to this week" or "research moving to a new neighborhood and make me a plan." Tarrow searches the web, reads pages, checks maps, compares options and verifies details. For big jobs it runs several agents in parallel. You watch every step live in the transcript.
+
+IT THINKS AS LONG AS THE TASK NEEDS
+• Fast: quick answers in seconds
+• Standard: research and actions in a few minutes
+• Deep: parallel agents and a thorough plan
+• Marathon: exhaustive research with a full report saved to your Library
+
+IT TAKES ACTION
+Goals and tasks, calendar events you add in one tap, drafted messages and emails for you to send, and routines that run in the background, always with your approval.
+
+PRIVATE BY DESIGN
+View, edit or delete anything Tarrow remembers, or delete your account at any time.

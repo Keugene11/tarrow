@@ -1,0 +1,34 @@
+// Screenshots of Pricing (logged out), Plans and Settings (free user), used for QA and the App Store review screenshot.
+// Usage: node qa/plans-shots.mjs [base] [outDir]
+import { chromium, devices } from "playwright";
+const BASE = process.argv[2] || "http://localhost:3000";
+const OUT = process.argv[3] || "qa/shots-billing";
+const browser = await chromium.launch();
+const errors = [];
+const ctx = await browser.newContext({ ...devices["iPhone 13"], deviceScaleFactor: 3 });
+const page = await ctx.newPage();
+page.on("pageerror", (e) => errors.push(e.message));
+page.on("console", (m) => m.type() === "error" && !/favicon|401/.test(m.text()) && errors.push(m.text()));
+await page.goto(`${BASE}/pricing`, { waitUntil: "networkidle" });
+await page.getByText("Get Pro").waitFor();
+await page.screenshot({ path: `${OUT}/pricing-guest.png` });
+const email = `qa+plans${Date.now()}@tarrow.test`;
+const req = page.request;
+await req.post(`${BASE}/api/auth/signup`, { data: { email, password: "testpass123", name: "Plans", city: "New York, NY", timezone: "America/New_York" } });
+await req.post(`${BASE}/api/consent`, { data: { agree: true } });
+await req.post(`${BASE}/api/onboarding/skip`, { data: {} });
+await page.goto(`${BASE}/upgrade`, { waitUntil: "networkidle" });
+await page.getByRole("button", { name: /Upgrade to Pro/ }).waitFor();
+await page.screenshot({ path: `${OUT}/upgrade-monthly.png` });
+await page.getByRole("radio", { name: /Yearly/ }).click();
+await page.getByText("$100").first().waitFor();
+await page.screenshot({ path: `${OUT}/upgrade-yearly.png` });
+await page.goto(`${BASE}/settings`, { waitUntil: "networkidle" });
+await page.getByText("Free plan").waitFor();
+await page.screenshot({ path: `${OUT}/settings-free.png` });
+await page.goto(`${BASE}/c/new`, { waitUntil: "networkidle" });
+await page.getByRole("button", { name: "Open menu" }).click();
+await page.getByRole("link", { name: "Upgrade to Pro" }).last().waitFor();
+await page.screenshot({ path: `${OUT}/menu-upgrade.png` });
+await browser.close();
+console.log(errors.length ? `ERRORS:\n${errors.join("\n")}` : "no page errors");

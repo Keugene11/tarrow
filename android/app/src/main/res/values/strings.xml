@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Tarrow</string>
+    <string name="title_activity_main">Tarrow</string>
+    <string name="package_name">com.tarrow.app</string>
+    <string name="custom_url_scheme">com.tarrow.app</string>
+</resources>

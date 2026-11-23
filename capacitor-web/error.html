@@ -1,0 +1,18 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Tarrow — offline</title>
+<style>
+html,body{margin:0;height:100%;background:#fff;color:#0a0a0a;font-family:-apple-system,system-ui,"Segoe UI",sans-serif}
+.wrap{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;box-sizing:border-box}
+h1{font-size:22px;margin:20px 0 6px;letter-spacing:-.01em}p{margin:0;color:#737373;font-size:15px;line-height:1.5;max-width:300px}
+button{margin-top:24px;border:0;border-radius:999px;background:#0a0a0a;color:#fff;font-size:15px;font-weight:600;padding:13px 28px;transition:transform .12s}
+button:active{transform:scale(.975)}
+</style></head>
+<body><div class="wrap">
+<svg width="48" height="48" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#0a0a0a"/><path d="M9 10.5h14M16 10.5v11.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M12.2 18.4 16 22.2l3.8-3.8" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+<h1>You're offline</h1>
+<p>Tarrow needs a connection. Anything it was working on keeps running in the background.</p>
+<button onclick="location.href='https://tarrow.vercel.app/home'">Try again</button>
+</div>
+<script>try{window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.SplashScreen&&window.Capacitor.Plugins.SplashScreen.hide()}catch(e){}
+window.addEventListener('online',function(){location.href='https://tarrow.vercel.app/home'});</script>
+</body></html>
